@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Server.Hubs;
+using Server.Extensions;
 
 namespace Server
 {
@@ -35,10 +35,7 @@ namespace Server
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapHub<MessageHub>("/message");
-            });
+            app.UseEndpoints(endpoints => endpoints.ConfigureHubMaps());
         }
     }
 }
